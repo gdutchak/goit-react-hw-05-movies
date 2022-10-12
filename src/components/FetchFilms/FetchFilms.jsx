@@ -1,19 +1,25 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Outlet, useLocation } from "react-router-dom";
 import fetchTrendingFilms from "utils/fetchFilms";
+import { LinkEl } from "./FetchFilms.styled";
 
 const TrendingFilms = () => {
-    const [films, setFilms] = useState([])
+    const [films, setFilms] = useState([]);
+    const location = useLocation();
 
     useEffect(() => {
         fetchTrendingFilms().then(data => setFilms(data.results))
     }, [])
 
+
     return (
-        <ul>
-            {films.map(({ id, original_title }) => <li key={id}>{original_title}</li>)}
-        </ul>
+        <>
+            {films.map(({ id, original_title }) => <LinkEl key={id} state={{ from: location }} to={`movies/${id}`}>{original_title}</LinkEl>)}
+            <Outlet />
+        </>
     )
 }
 
 export default TrendingFilms;
+
+
