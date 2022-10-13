@@ -21,19 +21,19 @@ const InfoFilms = () => {
         const genre = genres.map(({ name }) => name).join(', ');
         return (
             <>
-                <Button type="button" to={location.state.from}> &#x2190; Go back</Button>
+                <Button type="button" to={location.state?.from ?? '/'}> &#x2190; Go back</Button>
                 <Border>
                     <Div>{poster_path ? <Img src={`https://image.tmdb.org/t/p/w300${poster_path}`}></Img> : "We couldn`t found this foto"}
                         <div><h1>{original_title}</h1>
-                            <p>User score: {vote}%</p>
+                            <p>User score: {vote}</p>
                             <h2>Overview</h2>
                             <p>{overview}</p>
                             <h3>Genres</h3>
                             <p>{genre}</p>
                         </div></Div>
                     <p>Additional information:</p>
-                    <LinkActor to={'actors'} state={{ id, from: location.state.from }} >Cast</LinkActor>
-                    <LinkActor to={'review'} state={{ id, from: location.state.from }}>Reviews</LinkActor>
+                    <LinkActor to={'actors'} state={{ id, from: location.state?.from ?? '/' }} >Cast</LinkActor>
+                    <LinkActor to={'review'} state={{ id, from: location.state?.from ?? '/' }}>Reviews</LinkActor>
                     <Suspense fallback={null}><Outlet /></Suspense>
                 </Border>
             </>

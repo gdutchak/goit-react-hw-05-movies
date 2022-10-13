@@ -1,6 +1,5 @@
 import { List } from "components/Cast/Cast.styled";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import fetchInfoReview from "utils/fetchInfoReview";
 
