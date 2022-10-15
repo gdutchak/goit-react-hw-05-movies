@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Layout from "./Home/Home";
 import { lazy } from "react";
+import ErrorPage from "./Error/Error";
 
 const FetchFilmsCoreWord = lazy(() => import('./Movies/Movies'));
 const TrendOfFilms = lazy(() => import('./FetchFilms/FetchFilms'));
@@ -22,7 +23,7 @@ export const App = () => {
             <Route path="review" element={<Review />}></Route>
           </Route>
         </Route>
-        <Route path="*" element={<Layout />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </>
   );
